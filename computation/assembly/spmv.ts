@@ -281,6 +281,7 @@ export function spmv(): f64 {
   for (let i = 0; i < iterations; ++i) {
     spmvCsr(m.ax, dim, m.aRow, m.aCol, v, y, out)
   }
+  __collect()
   const t2 = performance.now()
 
   return t2 - t1

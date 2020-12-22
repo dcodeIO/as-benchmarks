@@ -25,7 +25,8 @@ const fetchWasm = async () => {
       },
       seed() {
         return Math.random() * 1e64
-      }
+      },
+      visit() {}
     }
   }
 
@@ -74,8 +75,14 @@ const animate = () => {
   imgData.data.set(fire)
   context.putImageData(imgData, 0, 0)
 
+  if (!(++animate.frame % 100)) {
+    console.log("gc")
+    wasmInstance.instance.exports.__collect()
+  }
+
   updateFPS()
 }
+animate.frame = 0
 
 export const runFire = async () => {
   await fetchWasm()

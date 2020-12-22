@@ -142,6 +142,7 @@ export function fft(): f64 {
 
   const t1 = performance.now()
   fft2D(data2D)
+  __collect()
   const t2 = performance.now()
   return t2 - t1
 }

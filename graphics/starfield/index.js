@@ -23,7 +23,8 @@ const fetchWasm = async () => {
       },
       seed() {
         return Math.random() * 1e64
-      }
+      },
+      visit() {}
     }
   }
   // Instantiate our wasm module
@@ -96,8 +97,14 @@ const animate = () => {
     context.fill()
   }
 
+  if (!(++animate.frame % 100)) {
+    console.log("gc")
+    wasmInstance.instance.exports.__collect();
+  }
+
   updateFPS()
 }
+animate.frame = 0
 
 export const runStarfield = async () => {
   await fetchWasm()

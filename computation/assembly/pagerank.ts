@@ -119,6 +119,7 @@ export function pagerank(): f64 {
     mapPageRank(pages, pageRanks, maps, nOutlinks, n)
     maxDiff = reducePageRank(pageRanks, maps, n)
   }
+  __collect()
   const t2 = performance.now()
   return t2 - t1
 }

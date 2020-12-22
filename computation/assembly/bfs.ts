@@ -128,6 +128,7 @@ export function bfs(): f64 {
     }
     ++k
   } while (stop)
+  __collect()
   const t2 = performance.now()
   return t2 - t1
 }

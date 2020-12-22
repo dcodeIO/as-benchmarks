@@ -9,7 +9,8 @@ const fetchWasm = async () => {
     env: {
       abort(_msg, _file, line, column) {
         console.error(`Abort called at ${_file}:${line}:${column}`)
-      }
+      },
+      visit() {}
     },
     common: {
       consoleLog(message) {

@@ -68,6 +68,7 @@ export function lud(): f64 {
 
   const t1 = performance.now()
   performLud(matrix, size)
+  __collect()
   const t2 = performance.now()
   return t2 - t1
 }
